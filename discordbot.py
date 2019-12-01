@@ -30,7 +30,7 @@ async def on_message(message):
         await message.channel.send(map(command))
 
     if command[0] == ';leader':
-        await message.channel.send(leader(command[1]))
+        await message.channel.send(leader(command))
 
     if command[0] == ';oppai':
         await message.channel.send('は？')
@@ -38,11 +38,13 @@ async def on_message(message):
     if command[0] == ';dice':
         await message.channel.send(dice(command[1], command[2]))
 
+    if command[0] == ';help':
+        await message.channel.send(help())
+
 # map決め関数
 
 
 def map(com):
-    print('実行')
     rep = ''
     mylist = ['小さな陸地プラス', 'シャッフル', 'ドーナツ', 'パンゲア', 'パンゲア＋', 'フラクタル', 'フロンティア',
               '全世界', '全世界R', '内海', '4隅', '大地', '大島世界', '大陸', '大陸＋', '楕円', '輪', '高地']
@@ -57,14 +59,18 @@ def map(com):
 # 指導者決め関数
 
 
-def leader(num):
-    num = int(num)
+def leader(com):
+    num = 0
+    rep = ''
     mylist = ['ローマ', 'フン', 'スペイン', 'ヴェネツィア', 'ポーランド', 'インド',
               'バビロニア', 'マヤ', 'インカ', 'ショショーニ', 'アステカ', 'シャム', 'エジプト']
-    rep = ''
-    random.shuffle(mylist)
-    for i in range(num):
-        rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
+    if com[1] == 'list':
+        rep = mylist
+    else:
+        random.shuffle(mylist)
+        num = int(com[1])
+        for i in range(num):
+            rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
     return rep
 
 # サイコロ関数
@@ -77,6 +83,13 @@ def dice(num1, num2):
     for _ in range(num1):
         rep += random.randrange(1, num2)
     return str(num1) + 'D' + str(num2) + 'の実行結果は' + str(rep) + 'です'
+
+# help用
+
+
+def help():
+    rep = 'このbotのヘルプです\n;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。\n;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示します。\n;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'
+    return rep
 
 
 # Botの起動とDiscordサーバーへの接続
