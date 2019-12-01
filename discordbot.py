@@ -27,7 +27,7 @@ async def on_message(message):
         await message.channel.send('にゃーん')
 
     if command[0] == ';map':
-        await message.channel.send(map())
+        await message.channel.send(map(command))
 
     if command[0] == ';leader':
         await message.channel.send(leader(command[1]))
@@ -41,11 +41,18 @@ async def on_message(message):
 # map決め関数
 
 
-def map():
+def map(com):
+    print('実行')
+    rep = ''
     mylist = ['小さな陸地プラス', 'シャッフル', 'ドーナツ', 'パンゲア', 'パンゲア＋', 'フラクタル', 'フロンティア',
               '全世界', '全世界R', '内海', '4隅', '大地', '大島世界', '大陸', '大陸＋', '楕円', '輪', '高地']
-    random.shuffle(mylist)
-    return mylist[0]
+    if len(com) == 2:
+        if com[1] == 'list':
+            rep = mylist
+    else:
+        random.shuffle(mylist)
+        rep = mylist[0]
+    return rep
 
 # 指導者決め関数
 
