@@ -32,6 +32,9 @@ async def on_message(message):
     if command[0] == ';leader':
         await message.channel.send(leader(command[1]))
 
+    if command[0] == ';oppai':
+        await message.channel.send('は？'))
+
 # map決め関数
 
 
