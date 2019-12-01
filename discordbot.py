@@ -35,6 +35,9 @@ async def on_message(message):
     if command[0] == ';oppai':
         await message.channel.send('は？')
 
+    if command[0] == ';dice':
+        await message.channel.send(dice(command[1], command[2]))
+
 # map決め関数
 
 
@@ -56,6 +59,17 @@ def leader(num):
     for i in range(num):
         rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
     return rep
+
+# サイコロ関数
+
+
+def dice(num1, num2):
+    rep = 0
+    num1 = int(num1)
+    num2 = int(num2)
+    for _ in range(num1):
+        rep += random.randrange(1, num2)
+    return str(num1) + 'D' + str(num2) + 'の実行結果は' + str(rep) + 'です'
 
 
 # Botの起動とDiscordサーバーへの接続
