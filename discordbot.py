@@ -60,17 +60,55 @@ def map(com):
 
 
 def leader(com):
-    num = 0
+    # num = 0
+    # rep = ''
+    # mylist = ['ローマ', 'フン', 'スペイン', 'ヴェネツィア', 'ポーランド', 'インド',
+    #           'バビロニア', 'マヤ', 'インカ', 'ショショーニ', 'アステカ', 'シャム', 'エジプト']
+    # if com[1] == 'list':
+    #     rep = mylist
+    # else
+    #     random.shuffle(mylist)
+    #     num = int(com[1])
+    #     for i in range(num):
+    #         rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
+    # return rep
+
+    check = True
     rep = ''
     mylist = ['ローマ', 'フン', 'スペイン', 'ヴェネツィア', 'ポーランド', 'インド',
               'バビロニア', 'マヤ', 'インカ', 'ショショーニ', 'アステカ', 'シャム', 'エジプト']
-    if com[1] == 'list':
-        rep = mylist
+    if len(com) < 2:
+        return rep
+    elif len(com) == 2:
+        if com[1] == 'list':
+            rep = mylist
+        elif com[1].isdecimal() == True:
+            random.shuffle(mylist)
+            for i in range(int(com[1])):
+                rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
     else:
-        random.shuffle(mylist)
-        num = int(com[1])
-        for i in range(num):
-            rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
+        for i in range(len(com)):
+            random.shuffle(mylist)
+            print(com[i])
+            print(mylist[i - 1])
+            if com[i] == 'せみころん' and mylist[i - 1] == 'ショショーニ':
+                print('得意！')
+                continue
+            elif com[i] == 'うぃるじん' and mylist[i - 1] == 'インカ':
+                print('得意！')
+                continue
+            elif com[i] == 'つっくん' and (mylist[i - 1] == 'イギリス' or mylist[i - 1] == 'ヴェネツィア'):
+                print('得意！')
+                continue
+            else:
+                print('苦手！')
+        else:
+            print('終わりだよ！')
+            for i in range(len(com)):
+                if i == 0:
+                    rep = ''
+                else:
+                    rep += com[i] + 'さんの指導者は' + mylist[i - 1] + 'です\n'
     return rep
 
 # サイコロ関数
@@ -88,7 +126,10 @@ def dice(num1, num2):
 
 
 def help():
-    rep = 'このbotのヘルプです\n;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。\n;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示します。\n;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'
+    rep = '''このbotのヘルプです\n
+    ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。\n
+    ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示します。\n
+    ;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'''
     return rep
 
 
