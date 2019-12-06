@@ -60,19 +60,6 @@ def map(com):
 
 
 def leader(com):
-    # num = 0
-    # rep = ''
-    # mylist = ['ローマ', 'フン', 'スペイン', 'ヴェネツィア', 'ポーランド', 'インド',
-    #           'バビロニア', 'マヤ', 'インカ', 'ショショーニ', 'アステカ', 'シャム', 'エジプト']
-    # if com[1] == 'list':
-    #     rep = mylist
-    # else
-    #     random.shuffle(mylist)
-    #     num = int(com[1])
-    #     for i in range(num):
-    #         rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
-    # return rep
-
     check = True
     rep = ''
     mylist = ['ローマ', 'フン', 'スペイン', 'ヴェネツィア', 'ポーランド', 'インド',
@@ -87,21 +74,26 @@ def leader(com):
             for i in range(int(com[1])):
                 rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
     else:
-        for i in range(len(com)):
-            random.shuffle(mylist)
-            print(com[i])
-            print(mylist[i - 1])
-            if com[i] == 'せみころん' and mylist[i - 1] == 'ショショーニ':
-                print('得意！')
-                continue
-            elif com[i] == 'うぃるじん' and mylist[i - 1] == 'インカ':
-                print('得意！')
-                continue
-            elif com[i] == 'つっくん' and (mylist[i - 1] == 'イギリス' or mylist[i - 1] == 'ヴェネツィア'):
-                print('得意！')
-                continue
-            else:
-                print('苦手！')
+        while check == True:
+            for i in range(len(com)):
+                random.shuffle(mylist)
+                print(com[i])
+                print(mylist[i - 1])
+                if com[i] == 'せみころん' and mylist[i - 1] == 'ショショーニ':
+                    check = True
+                    print('得意！')
+                    break
+                elif com[i] == 'うぃるじん' and mylist[i - 1] == 'インカ':
+                    check = True
+                    print('得意！')
+                    break
+                elif com[i] == 'つっくん' and (mylist[i - 1] == 'イギリス' or mylist[i - 1] == 'ヴェネツィア'):
+                    check = True
+                    print('得意！')
+                    break
+                else:
+                    check = False
+                    print('苦手！')
         else:
             print('終わりだよ！')
             for i in range(len(com)):
