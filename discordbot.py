@@ -80,8 +80,8 @@ def leader(com):
                 rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
     else:
         while check == True:
+            random.shuffle(mylist)
             for i in range(len(com)):
-                random.shuffle(mylist)
                 print(com[i])
                 print(mylist[i - 1])
                 if com[i] == 'せみころん' and (mylist[i - 1] == 'ショショーニ' or mylist[i - 1] == 'スペイン' or mylist[i - 1] == '朝鮮' or mylist[i - 1] == 'ポーランド'):
