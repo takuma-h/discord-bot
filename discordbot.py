@@ -84,11 +84,11 @@ def leader(com):
                 random.shuffle(mylist)
                 print(com[i])
                 print(mylist[i - 1])
-                if com[i] == 'せみころん' and mylist[i - 1] == 'ショショーニ':
+                if com[i] == 'せみころん' and (mylist[i - 1] == 'ショショーニ' or mylist[i - 1] == 'スペイン' or mylist[i - 1] == '朝鮮' or mylist[i - 1] == 'ポーランド'):
                     check = True
                     print('得意！')
                     break
-                elif com[i] == 'うぃるじん' and mylist[i - 1] == 'インカ':
+                elif com[i] == 'うぃるじん' and (mylist[i - 1] == 'インカ' or mylist[i - 1] == 'スペイン'):
                     check = True
                     print('得意！')
                     break
@@ -96,7 +96,7 @@ def leader(com):
                     check = True
                     print('得意！')
                     break
-                elif com[i] == 'とりん' and mylist[i - 1] == 'ショショーニ':
+                elif com[i] == 'とりん' and (mylist[i - 1] == 'ショショーニ' or mylist[i - 1] == 'スペイン' or mylist[i - 1] == '朝鮮' or mylist[i - 1] == 'ポーランド'):
                     check = True
                     print('得意！')
                     break
