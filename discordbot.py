@@ -19,6 +19,7 @@ async def on_ready():
 async def on_message(message):
     command = message.content
     command = command.split(' ')
+    channel = message.channel.id
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
@@ -40,6 +41,10 @@ async def on_message(message):
 
     if command[0] == ';help':
         await message.channel.send(help())
+
+    if command[0] == ';memo':
+        print(channel)
+        await message.channel.send('草')
 
 # map決め関数
 
@@ -63,7 +68,7 @@ def leader(com):
     check = True
     rep = ''
     mylist = ['ローマ', 'フン', 'スペイン', 'ヴェネツィア', 'ポーランド', 'インド',
-              'バビロニア', 'マヤ', 'インカ', 'ショショーニ', 'アステカ', 'シャム', 'エジプト']
+              'バビロニア', 'マヤ', 'インカ', 'ショショーニ', 'アステカ', 'シャム', 'エジプト', '朝鮮', 'アラビア', 'エチオピア', 'ギリシャ', 'イギリス', 'ペルシャ']
     if len(com) < 2:
         return rep
     elif len(com) == 2:
@@ -88,6 +93,10 @@ def leader(com):
                     print('得意！')
                     break
                 elif com[i] == 'つっくん' and (mylist[i - 1] == 'イギリス' or mylist[i - 1] == 'ヴェネツィア'):
+                    check = True
+                    print('得意！')
+                    break
+                elif com[i] == 'とりん' and mylist[i - 1] == 'ショショーニ':
                     check = True
                     print('得意！')
                     break
@@ -120,7 +129,7 @@ def dice(num1, num2):
 def help():
     rep = '''このbotのヘルプです\n
     ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。\n
-    ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示します。\n
+    ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示\n
     ;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'''
     return rep
 
