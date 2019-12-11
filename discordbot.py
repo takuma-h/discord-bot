@@ -84,25 +84,10 @@ def leader(com):
             for i in range(len(com)):
                 print(com[i])
                 print(mylist[i - 1])
-                if com[i] == 'せみころん' and (mylist[i - 1] == 'ショショーニ' or mylist[i - 1] == 'スペイン' or mylist[i - 1] == '朝鮮' or mylist[i - 1] == 'ポーランド'):
-                    check = True
-                    print('得意！')
+                check = leadercheck(com[i], mylist[i - 1])
+                print(check)
+                if check == True:
                     break
-                elif com[i] == 'うぃるじん' and (mylist[i - 1] == 'インカ' or mylist[i - 1] == 'スペイン'):
-                    check = True
-                    print('得意！')
-                    break
-                elif com[i] == 'つっくん' and (mylist[i - 1] == 'イギリス' or mylist[i - 1] == 'ヴェネツィア'):
-                    check = True
-                    print('得意！')
-                    break
-                elif com[i] == 'とりん' and (mylist[i - 1] == 'ショショーニ' or mylist[i - 1] == 'スペイン' or mylist[i - 1] == '朝鮮' or mylist[i - 1] == 'ポーランド'):
-                    check = True
-                    print('得意！')
-                    break
-                else:
-                    check = False
-                    print('苦手！')
         else:
             print('終わりだよ！')
             for i in range(len(com)):
@@ -111,6 +96,22 @@ def leader(com):
                 else:
                     rep += com[i] + 'さんの指導者は' + mylist[i - 1] + 'です\n'
     return rep
+
+# リーダー照合関数
+
+
+def leadercheck(username, civ):
+    user = {
+        'せみころん': ['ショショーニ', 'スペイン', '朝鮮', 'ポーランド'],
+        'うぃるじん': ['スペイン', 'インカ'],
+        'つっくん': ['イギリス', 'ヴェネツィア'],
+        'とりん': ['ショショーニ', 'スペイン', '朝鮮', 'ポーランド']
+    }
+
+    if username == ';leader':
+        return False
+    else:
+        return civ in user[username]
 
 # サイコロ関数
 
