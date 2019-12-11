@@ -105,10 +105,7 @@ def leadercheck(username, civ):
         'とりん': ['ショショーニ', 'スペイン', '朝鮮', 'ポーランド']
     }
 
-    if username == ';leader':
-        return False
-    else:
-        return civ in user[username]
+    return civ in user[username]
 
 # サイコロ関数
 
