@@ -81,20 +81,17 @@ def leader(com):
     else:
         while check == True:
             random.shuffle(mylist)
-            for i in range(len(com)):
+            for i in range(1, len(com)):
                 print(com[i])
-                print(mylist[i - 1])
-                check = leadercheck(com[i], mylist[i - 1])
+                print(mylist[i])
+                check = leadercheck(com[i], mylist[i])
                 print(check)
                 if check == True:
                     break
         else:
             print('終わりだよ！')
-            for i in range(len(com)):
-                if i == 0:
-                    rep = ''
-                else:
-                    rep += com[i] + 'さんの指導者は' + mylist[i - 1] + 'です\n'
+            for i in range(1, len(com)):
+                rep += com[i] + 'さんの指導者は' + mylist[i] + 'です\n'
     return rep
 
 # リーダー照合関数
