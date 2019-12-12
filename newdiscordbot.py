@@ -65,12 +65,12 @@ async def table(ctx, opt):
     elif opt == 'leader':
         ctx.send(', '.join(civList))
 
-@bot.command()
-async def help(ctx):
-    rep = '''このbotのヘルプです
-    ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。
-    ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示
-    ;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'''
-    ctx.send(rep)
+# @bot.command()
+# async def help(ctx):
+#     rep = '''このbotのヘルプです
+#     ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。
+#     ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示
+#     ;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'''
+#     ctx.send(rep)
 
 bot.run('NjUwNjM0OTQ0ODQ2MjMzNjIx.XeOQjQ.SwG1TeRaTO6oX2EfjzQ-3o7sTv8')
