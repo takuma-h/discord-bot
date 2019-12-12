@@ -17,8 +17,7 @@ async def on_ready():
 # メッセージ受信時に動作する処理
 @client.event
 async def on_message(message):
-    command = message.content
-    command = command.split(' ')
+    command = message.content.split(' ')
     channel = message.channel.id
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
@@ -74,19 +73,20 @@ def leader(com):
     elif len(com) == 2:
         if com[1] == 'list':
             rep = mylist
-        elif com[1].isdecimal() == True:
+        elif com[1].isdecimal():
             random.shuffle(mylist)
             for i in range(int(com[1])):
-                rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
+                rep = f'{i + 1}人目の指導者は{mylist[i]}です'
+                # rep += str(i + 1) + '人目の指導者は' + mylist[i] + 'です\n'
     else:
-        while check == True:
+        while check:
             random.shuffle(mylist)
             for i in range(1, len(com)):
                 print(com[i])
                 print(mylist[i])
                 check = leadercheck(com[i], mylist[i])
                 print(check)
-                if check == True:
+                if check:
                     break
         else:
             print('終わりだよ！')
@@ -114,17 +114,19 @@ def dice(num1, num2):
     rep = 0
     num1 = int(num1)
     num2 = int(num2)
+    total = sum([random.randrange(1, num2) for _ in range(num1)])
     for _ in range(num1):
         rep += random.randrange(1, num2)
+    return f'{num1}D{num2}の実行結果は{total}です'
     return str(num1) + 'D' + str(num2) + 'の実行結果は' + str(rep) + 'です'
 
 # help用
 
 
 def help():
-    rep = '''このbotのヘルプです\n
-    ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。\n
-    ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示\n
+    rep = '''このbotのヘルプです
+    ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。
+    ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示
     ;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'''
     return rep
 
