@@ -15,7 +15,7 @@ async def on_ready():
 
 @bot.command()
 async def map(ctx):
-    ctx.send(random.choice(mapList))
+    await ctx.send(random.choice(mapList))
 
 @bot.command()
 async def leader(ctx, *args):
@@ -29,7 +29,7 @@ async def leader(ctx, *args):
                 for i in range(int(args[0]))
             ]
 
-            ctx.send('\n'.join(res))
+            await ctx.send('\n'.join(res))
     else:
         excludedDict = {
             'せみころん': ['ショショーニ', 'スペイン', '朝鮮', 'ポーランド'],
@@ -51,19 +51,19 @@ async def leader(ctx, *args):
             choiced.append(civ)
             res.append(f'{player}さんの指導者は{civ}です')
 
-        ctx.send('\n'.join(res))
+        await ctx.send('\n'.join(res))
 
 @bot.command()
 async def dice(ctx, dicenum: int, diceface: int):
     total = sum([random.randrange(1, diceface) for _ in range(dicenum)])
-    ctx.send(f'{dicenum}D{diceface}の実行結果は{total}です')
+    await ctx.send(f'{dicenum}D{diceface}の実行結果は{total}です')
 
 @bot.command()
 async def table(ctx, opt):
     if opt == 'map':
-        ctx.send(', '.join(mapList))
+        await ctx.send(', '.join(mapList))
     elif opt == 'leader':
-        ctx.send(', '.join(civList))
+        await ctx.send(', '.join(civList))
 
 # @bot.command()
 # async def help(ctx):
@@ -71,6 +71,6 @@ async def table(ctx, opt):
 #     ;map → 「;map」でciv5のmapをランダムに選出、「;map list」で登録されているマップの一覧を表示します。
 #     ;leader → 「;leader 数字」で指定した人数分の指導者を選出、「;leader list」で登録されている指導者の一覧を表示
 #     ;dice → 「;dise 数字1 数字2」で(数字1 D 数字2)のダイスを振ります。'''
-#     ctx.send(rep)
+#     await ctx.send(rep)
 
 bot.run('NjUwNjM0OTQ0ODQ2MjMzNjIx.XeOQjQ.SwG1TeRaTO6oX2EfjzQ-3o7sTv8')
